@@ -95,6 +95,9 @@ REST_FRAMEWORK = {
         'helusers.oidc.IdTokenAuthentication',
         'helusers.jwt.JWTAuthentication',
     ),
+    #'DEFAULT_PERMISSION_CLASSES': [
+    #    'helusers.permissions.ApiScopePermission',
+    #],
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'],

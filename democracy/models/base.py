@@ -146,6 +146,10 @@ class Commentable(models.Model):
             if not is_authenticated:
                 raise ValidationError(_("%s does not allow anonymous commenting") % self, code="commenting_registered")
         elif self.commenting == Commenting.OPEN:
+            if not self.request.auth.has_api_scopes('kerrokantasi'):
+                raise ValidationError(
+                    _("No authorization to comment"),
+                    code='commenting_unauthorized')
             return
         else:  # pragma: no cover
             raise NotImplementedError("Not implemented")

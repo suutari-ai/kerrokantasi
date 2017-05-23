@@ -5,6 +5,7 @@ import datetime
 from django.conf import settings
 from django.db import transaction
 from django.db.models import Prefetch
+from helusers.permissions import ApiScopePermission
 from rest_framework import filters, permissions, response, serializers, status, viewsets
 from rest_framework.decorators import detail_route, list_route
 from rest_framework.exceptions import NotFound, PermissionDenied, ValidationError
@@ -280,6 +281,7 @@ class HearingViewSet(AdminsSeeUnpublishedMixin, viewsets.ModelViewSet):
     model = Hearing
     filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter)
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    #permission_classes = [ApiScopePermission]
     pagination_class = DefaultLimitPagination
     serializer_class = HearingListSerializer
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES + [GeoJSONRenderer, ]
