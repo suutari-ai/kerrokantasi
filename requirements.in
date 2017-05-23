@@ -9,7 +9,7 @@ psycopg2
 easy-thumbnails
 drf-nested-routers
 xlsxwriter
--e git+https://github.com/City-of-Helsinki/django-helusers@v0.1#egg=django-helusers
+-e git+https://github.com/City-of-Helsinki/django-helusers@oidc#egg=django-helusers
 djangorestframework-jwt
 pyjwt
 django-enumfields>=0.8

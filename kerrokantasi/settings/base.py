@@ -92,6 +92,7 @@ CORS_URLS_REGEX = r'^/[a-z-]*/?v1/.*$'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'helusers.oidc.IdTokenAuthentication',
         'helusers.jwt.JWTAuthentication',
     ),
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
@@ -102,6 +103,11 @@ REST_FRAMEWORK = {
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
 }
 
+HELSINKI_ID_TOKEN_AUTH = {
+    'AUDIENCE': 'https://api.hel.fi/auth/kerrokantasi',
+    'API_SCOPE_PREFIX': 'kerrokantasi',
+    'REQUIRE_API_SCOPE_FOR_AUTHENTICATION': True,
+}
 
 JWT_AUTH = {
     'JWT_PAYLOAD_GET_USER_ID_HANDLER': 'helusers.jwt.get_user_id_from_payload_handler',
